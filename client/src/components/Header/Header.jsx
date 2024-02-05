@@ -28,14 +28,11 @@ const Header = (props) => {
           </Link>
           <Box sx={{ flex: 1 }}></Box>
           {showLogout && (
-            <>
-              <Link to="/workouts" style={{ color: '#fff', textDecoration: 'none' }}>
-                Workouts
-              </Link>
+            <Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
               <Button color="inherit" onClick={handleLogout}>
                 Logout
               </Button>
-            </>
+            </Box>
           )}
         </Toolbar>
       </Container>

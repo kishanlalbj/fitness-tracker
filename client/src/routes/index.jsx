@@ -1,9 +1,10 @@
+import React from 'react';
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 import Layout from '../layouts';
 import Home from '../pages/Home';
-import Login from '../pages/Login';
+const Login = React.lazy(() => import('../pages/Login'));
 import ProtectedRoute from './ProtectedRoute';
-import Workouts from '../pages/Workouts';
+
 import NotFound from '../pages/NotFound';
 
 const router = createBrowserRouter(
@@ -16,15 +17,6 @@ const router = createBrowserRouter(
           element={
             <ProtectedRoute>
               <Home />
-            </ProtectedRoute>
-          }
-        ></Route>
-
-        <Route
-          path="/workouts"
-          element={
-            <ProtectedRoute>
-              <Workouts />
             </ProtectedRoute>
           }
         ></Route>

@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   data: {},
   loading: false,
-  error: null
+  error: null,
+  macro: {}
 };
 
 const metricsSlice = createSlice({
@@ -21,10 +22,19 @@ const metricsSlice = createSlice({
     setMetricsError: (state, action) => {
       state.error = action.payload;
       state.loading = false;
+    },
+    getMacros: (state, { payload }) => {
+      console.log({ payload });
+      state.loading = true;
+      return payload;
+    },
+    setMacros: (state, action) => {
+      state.macro = action.payload;
+      state.loading = false;
     }
   }
 });
 
-export const { getMetrics, setMetrics, setMetricsError } = metricsSlice.actions;
+export const { getMetrics, setMetrics, setMetricsError, getMacros, setMacros } = metricsSlice.actions;
 
 export default metricsSlice.reducer;

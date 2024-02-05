@@ -50,10 +50,16 @@ const calculateBMIResult = (bmi) => {
   }
 };
 
+const calculateMaintanenceCalorie = (weight, height, age) => {
+  console.log({ weight, height, age });
+  return 10 * weight + 6.25 * height - 5 * age + 5;
+};
+
 module.exports = {
   calculateBMI,
   calculateBodyFat,
   calculateBMR,
   calculateAge,
-  calculateBMIResult
+  calculateBMIResult,
+  calculateMaintanenceCalorie
 };

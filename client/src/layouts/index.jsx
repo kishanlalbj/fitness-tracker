@@ -36,7 +36,7 @@ const Layout = () => {
     <div>
       <Header handleLogout={handleLogout} showLogout={isAuthenticated} />
 
-      <Container>
+      <Container sx={{ mt: 3 }}>
         <Outlet />
       </Container>
     </div>

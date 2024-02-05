@@ -11,10 +11,13 @@ export const getUserRequest = () => axios.get('/api/auth/profile');
 export const getMetricsRequest = () => axios.get('/api/metrics/chart');
 
 export const registerUserRequest = (registerForm) => {
-  console.log({
-    registerForm
-  });
   return axios.post('/api/auth/register', {
     ...registerForm
+  });
+};
+
+export const getMacrosRequest = (weight) => {
+  return axios.post('/api/macros', {
+    weight
   });
 };

@@ -91,8 +91,6 @@ const Login = () => {
       if (!registerForm[key]) return emptyFields.push(key);
     });
 
-    console.log(emptyFields);
-
     if (emptyFields.length > 0) {
       setErrorFields(emptyFields);
       return;

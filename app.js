@@ -5,12 +5,19 @@ const createHttpError = require("http-errors");
 const morgan = require("morgan");
 const userRouter = require("./routes/user");
 const metricRouter = require("./routes/metric");
+const macrosRouter = require("./routes/macros");
 const helmet = require("helmet");
+const cors = require("cors");
 const cache = require("./middlewares/cache");
 
 console.log(process.env.NODE_ENV);
 
 if (process.env.NODE_ENV !== "production") require("dotenv").config({});
+else {
+  require("dotenv").config({
+    path: `.env.production`
+  });
+}
 
 const PORT = process.env.PORT || 4000;
 
@@ -18,6 +25,7 @@ require("./db");
 const app = express();
 
 app.use(helmet({}));
+app.use(cors({}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -27,6 +35,7 @@ app.use(express.static(path.join(__dirname, "client", "dist")));
 
 app.use("/api/auth", userRouter);
 app.use("/api/metrics", metricRouter);
+app.use("/api/macros", macrosRouter);
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/client/dist/index.html"));
